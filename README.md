@@ -3,90 +3,115 @@
 ![Status](https://img.shields.io/badge/status-production--ready-brightgreen)
 ![Tech](https://img.shields.io/badge/tech-vanilla%20HTML%2FCSS%2FJS-orange)
 ![API](https://img.shields.io/badge/API-Xiaomi%20MiMo%20V2.5-FF6900)
+![Agent](https://img.shields.io/badge/built%20with-Hermes%20Agent-purple)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-**MiMo Coder** is a polished, browser-native AI code assistant powered by the Xiaomi MiMo API. It provides a modern Cursor/VS Code-inspired chat workspace for software engineering help, including code generation, debugging, refactoring, architecture guidance, and explanations.
+**MiMo Coder** is an AI-powered code assistant web application that integrates directly with the **Xiaomi MiMo V2.5 API**. It provides a modern, Cursor-inspired chat workspace for software engineering tasks including code generation, debugging, refactoring, architecture design, and technical explanations — all running entirely in the browser with zero build tools.
 
-> Built for the Xiaomi MiMo 100T Token Creator Incentive Program and designed to clearly showcase MiMo's OpenAI-compatible streaming chat completions API.
+> Built as part of the **Xiaomi MiMo Orbit 100T Token Creator Incentive Program** to demonstrate real-world MiMo API integration and AI-driven development workflows.
 
-## Screenshot
+## Screenshots
 
-![MiMo Coder screenshot placeholder](https://placehold.co/1200x720/0d1117/ff6900?text=MiMo+Coder+Screenshot)
+![MiMo Coder — Main Chat Interface](screenshots/screenshot-1.png)
+
+![MiMo Coder — Settings & Configuration](screenshots/screenshot-2.png)
 
 ## Features
 
-- **Xiaomi MiMo API integration** using the OpenAI-compatible `/chat/completions` endpoint
-- **Streaming responses** with Server-Sent Events for real-time assistant output
-- **Modern dark UI** inspired by Cursor and VS Code
-- **Markdown rendering** via marked.js
-- **Syntax-highlighted code blocks** via highlight.js
-- **Copy button** on every code block
-- **Conversation history** with active chat highlighting
-- **Persistent local storage** for conversations and API key
-- **Settings modal** for securely entering your MiMo API key in the browser
+- **Xiaomi MiMo V2.5 API integration** using OpenAI-compatible `/chat/completions` streaming endpoint
+- **Real-time streaming responses** via Server-Sent Events (SSE)
+- **Markdown rendering** with marked.js — headers, lists, bold, italic, links
+- **Syntax-highlighted code blocks** with highlight.js (multi-language)
+- **Copy code button** on every code block for instant clipboard access
+- **Multi-conversation support** — create, switch, and delete chat sessions
+- **Persistent localStorage** — conversations and API key survive browser restarts
+- **Settings modal** for secure API key configuration
 - **Responsive mobile layout** with collapsible sidebar
-- **Empty state** with high-quality suggested coding prompts
+- **Welcome screen** with curated coding prompts to get started
 
 ## How to Use
 
-No installation, build step, or server is required.
+No installation, build step, or server required.
 
-1. Download or clone this project.
-2. Open `index.html` in a modern browser.
-3. Click the gear icon in the top-right corner.
-4. Paste your Xiaomi MiMo API key and save.
-5. Start chatting with **MiMo Coder**.
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/owiagent123-maker/mimo-coder.git
+   cd mimo-coder
+   ```
+2. Open `index.html` in any modern browser
+3. Click the gear icon (⚙) in the top-right corner
+4. Paste your Xiaomi MiMo API key and save
+5. Start chatting with MiMo Coder
 
-Because this app runs entirely in the browser, your conversations and API key are stored locally in `localStorage` on your device.
+## How It Was Built — AI-Driven Development Workflow
+
+This project was built entirely through an **AI-driven development pipeline** using **Hermes Agent** as the primary orchestration tool, with **Xiaomi MiMo V2.5 Pro** as the reasoning backbone.
+
+### Development Process
+
+1. **Planning & Architecture** — Hermes Agent analyzed the project requirements, designed the component architecture (chat UI, API layer, state management, persistence), and created a detailed implementation plan with task decomposition.
+
+2. **Code Generation** — Using a multi-agent delegation pattern:
+   - **Orchestrator (Hermes Agent)** — managed task flow, quality gates, and integration
+   - **Worker agents** — generated HTML structure, CSS styling, and JavaScript application logic in parallel
+   - Each agent received self-contained context with file paths, constraints, and acceptance criteria
+
+3. **API Integration** — The MiMo streaming API was integrated using the OpenAI-compatible `chat/completions` format with `stream: true`, implementing proper SSE parsing with `ReadableStream` and `TextDecoder`.
+
+4. **Quality Assurance** — Automated syntax checking, feature verification, and manual browser testing via a remote headless browser (Xvfb + x11vnc + noVNC) on a cloud VPS.
+
+5. **Deployment** — Pushed to GitHub using automated git workflows with credential management.
+
+### Tools & Models Used
+
+| Tool | Role |
+|------|------|
+| **Hermes Agent** | Primary orchestration, task delegation, memory management |
+| **Xiaomi MiMo V2.5 Pro** | Reasoning, planning, code review, architecture decisions |
+| **GPT-5.5 (via 9Router)** | Worker tasks: code generation, debugging, file operations |
+| **CloakBrowser** | Headless browser testing and screenshot capture |
+| **GitHub API** | Repository creation and code deployment |
+
+### Key Technical Decisions
+
+- **Zero build tools** — vanilla HTML/CSS/JS with CDN dependencies for maximum portability
+- **Client-side only** — no backend server needed; API key stored in localStorage
+- **Streaming-first** — SSE implementation for real-time token-by-token responses
+- **Component isolation** — separate files (HTML, CSS, JS) with clear boundaries
 
 ## MiMo API Configuration
 
-MiMo Coder uses Xiaomi MiMo's OpenAI-compatible API:
+MiMo Coder connects to Xiaomi MiMo's OpenAI-compatible API:
 
 - **Base URL:** `https://token-plan-sgp.xiaomimimo.com/v1`
 - **Endpoint:** `/chat/completions`
 - **Model:** `mimo-v2.5-pro`
-- **Streaming:** Enabled
-
-System prompt used by the app:
-
-```text
-You are MiMo Coder, an expert AI coding assistant powered by Xiaomi MiMo. Help users with code, debugging, architecture, and software engineering.
-```
+- **Streaming:** Enabled (`stream: true`)
 
 ## Tech Stack
 
-- **HTML5** for structure
-- **CSS3** for the responsive dark product UI
-- **Vanilla JavaScript** for state, streaming, rendering, persistence, and API calls
-- **marked.js CDN** for markdown rendering
-- **highlight.js CDN** for syntax highlighting
-- **Browser localStorage** for API key and conversation persistence
+- **HTML5** — semantic structure
+- **CSS3** — dark theme, responsive grid, animations
+- **Vanilla JavaScript** — state management, streaming, rendering, persistence
+- **marked.js** (CDN) — markdown to HTML rendering
+- **highlight.js** (CDN) — syntax highlighting for 190+ languages
+- **localStorage** — client-side persistence for conversations and settings
 
 ## Project Structure
 
 ```text
 mimo-coder/
-├── index.html   # App shell and CDN imports
-├── styles.css   # Modern dark UI styling
-├── app.js       # Chat logic, MiMo API streaming, persistence
-└── README.md    # Documentation
+├── index.html       # App shell, CDN imports, layout
+├── styles.css       # Dark UI, responsive design, animations
+├── app.js           # Chat engine, MiMo API streaming, state management
+├── screenshots/     # Application screenshots
+└── README.md        # This file
 ```
 
 ## Browser Compatibility
 
-MiMo Coder uses modern browser APIs including `fetch`, `ReadableStream`, `TextDecoder`, `localStorage`, and the Clipboard API. Current versions of Chrome, Edge, Firefox, and Safari are recommended.
-
-## Security Note
-
-This static app stores the API key in browser `localStorage` for convenience. For team deployments or public hosting, consider adding a small backend proxy so API keys are not exposed in the client.
+Modern browsers with support for `fetch`, `ReadableStream`, `TextDecoder`, `localStorage`, and Clipboard API: Chrome 90+, Edge 90+, Firefox 90+, Safari 15+.
 
 ## License
 
-MIT License
-
-Copyright (c) 2026 MiMo Coder contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files, to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, subject to inclusion of this copyright notice and permission notice in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+MIT License — see [LICENSE](LICENSE) for details.
