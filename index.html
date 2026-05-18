@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MiMo Coder is an AI-powered code assistant built with the Xiaomi MiMo API." />
+  <title>MiMo Coder — AI-Powered Code Assistant</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">M</div>
+        <div>
+          <h1>MiMo Coder</h1>
+          <p>AI-Powered Code Assistant</p>
+        </div>
+      </div>
+
+      <button class="new-chat" id="newChatBtn" type="button">
+        <span>＋</span> New Chat
+      </button>
+
+      <div class="history-header">Conversations</div>
+      <nav class="history" id="historyList" aria-label="Conversation history"></nav>
+
+      <footer class="sidebar-footer">Powered by Xiaomi MiMo V2.5</footer>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-menu" id="mobileMenuBtn" type="button" aria-label="Toggle sidebar">☰</button>
+        <div class="topbar-title">
+          <strong>MiMo Coder</strong>
+          <span id="conversationTitle">Ready to build</span>
+        </div>
+        <button class="icon-btn" id="settingsBtn" type="button" aria-label="Open settings">⚙</button>
+      </header>
+
+      <section class="messages" id="messages" aria-live="polite"></section>
+
+      <section class="composer-wrap">
+        <div class="composer-hint" id="apiHint">Configure your Xiaomi MiMo API key in settings to start coding.</div>
+        <form class="composer" id="chatForm">
+          <textarea id="messageInput" rows="1" placeholder="Ask MiMo to write, debug, refactor, or explain code..." autocomplete="off"></textarea>
+          <button class="send-btn" id="sendBtn" type="submit" aria-label="Send message">➤</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h2 id="settingsTitle">MiMo API Settings</h2>
+          <p>Connect to Xiaomi MiMo's OpenAI-compatible chat completions endpoint.</p>
+        </div>
+        <button class="icon-btn" id="closeSettingsBtn" type="button" aria-label="Close settings">×</button>
+      </div>
+      <label class="field">
+        <span>API Key</span>
+        <input id="apiKeyInput" type="password" placeholder="Paste your Xiaomi MiMo API key" />
+      </label>
+      <div class="api-details">
+        <div><span>Base URL</span><code>https://token-plan-sgp.xiaomimimo.com/v1</code></div>
+        <div><span>Model</span><code>mimo-v2.5-pro</code></div>
+      </div>
+      <div class="modal-actions">
+        <button class="ghost-btn" id="clearKeyBtn" type="button">Clear Key</button>
+        <button class="primary-btn" id="saveSettingsBtn" type="button">Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
